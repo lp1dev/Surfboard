@@ -1,6 +1,9 @@
 # Surfboard
 
-> A Vue.js project
+[Live Demo](https://lp1dev.github.io/Surfboard/) **Chrome 61+ only!**
+    
+> Web synthetizers compatible with MIDI inputs
+
 
 ## Build Setup
 
