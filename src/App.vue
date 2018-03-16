@@ -3,6 +3,10 @@
     <div id="app-header">
       <h3>Surfboard</h3>
     </div>
+    <div class="app-container app-error" v-if="!compatibleBrowser">
+      I'm sorry but unfortunately your browser isn't yet supported by the APIs Surfboard is using! Please try again with a recent Chrome or Chromium version.
+      Thanks!
+    </div>
     <div class="app-container midi-input-select" v-if="seaboardInputs.length && !seaboard">
       <h3>Which MIDI Input should we use?</h3>
       <div class="option-light"
@@ -37,7 +41,8 @@ export default {
     return {
       seaboardInputs: [],
       selected: null,
-      seaboard: null
+      seaboard: null,
+      compatibleBrowser: MIDIController.compatibleBrowser
     };
   },
   created() {
@@ -119,6 +124,9 @@ button:hover {
   border-radius: 1vh;
   margin: 1vh;
   overflow-y: auto;
+}
+.app-error {
+  padding: 20vh;
 }
 .midi-input-select {
   max-width: 100vh;
