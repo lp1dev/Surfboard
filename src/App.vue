@@ -28,11 +28,10 @@
 </template>
 
 <script>
-import { MIDIController } from "@/utils/MIDI"
-import Seaboard from "@/utils/Seaboard"
+import { MIDIController } from "@/lib/seaboard-api/js/MIDI"
+import Seaboard from "@/lib/seaboard-api/js/Seaboard"
 import Synthetizers from '@/components/Synthetizers'
 import KeyTracker from '@/components/KeyTracker'
-import Sample from '@/components/Sample'
 
 export default {
   name: "App",
