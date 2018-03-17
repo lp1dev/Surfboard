@@ -15,6 +15,7 @@
         @click="selected = seaboardInput"
         :class="{selected: selected === seaboardInput}">{{seaboardInput.name}}
       </div>
+      <div class="option-light" @click="loadSeaboardInputs">Reload</div>
       <button v-if="selected" @click="connect">Connect</button>
     </div>
     <div class="app-container midi-input-select" v-if="!seaboardInputs.length">
@@ -89,7 +90,7 @@ button {
   padding: 1vh;
 }
 button:hover {
-  transition: color 1s;
+  transition: 0.5 all;
   background-color: rgb(124, 123, 123);
 }
 ::-webkit-scrollbar {
@@ -141,5 +142,9 @@ button:hover {
 }
 .option-light.selected {
   background-color: rgb(124, 123, 123);
+}
+.option-light:hover {
+  transition: 0.5 all;
+  background-color: rgb(100, 100, 100);
 }
 </style>
