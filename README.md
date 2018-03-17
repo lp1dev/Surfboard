@@ -2,7 +2,7 @@
 
 [Live Demo](https://lp1dev.github.io/Surfboard/) **Chrome 61+ only!**
     
-> Web synthetizers compatible with MIDI inputs. Using [Roli Seaboard Web API].(https://github.com/lp1dev/Roli-Seaboard-Web-API)
+> Web synthetizers compatible with MIDI inputs. Using [Roli Seaboard Web API](https://github.com/lp1dev/Roli-Seaboard-Web-API)
 
 ![screen1](https://github.com/lp1dev/Surfboard/blob/master/screens/screen1.png?raw=true)
 
