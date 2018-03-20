@@ -3,9 +3,11 @@
     <div id="app-header">
       <h3>Surfboard</h3>
     </div>
-    <card class="app-container app-error" v-if="!compatibleBrowser" title="error">
-      I'm sorry but unfortunately your browser isn't yet supported by the APIs Surfboard is using! Please try again with a recent Chrome or Chromium version.
-      Thanks!
+    <card v-if="!compatibleBrowser" title="Ooops">
+      <div class="app-error">
+        I'm sorry but unfortunately your browser isn't yet supported by the APIs Surfboard is using! Please try again with a recent Chrome or Chromium version.
+        Thanks!
+      </div>
     </card>
     <card class="midi-input-select" v-if="seaboardInputs.length && !seaboard" title="Which MIDI Input should we use?">
       <div class="option-light midi-input-option"
@@ -17,7 +19,7 @@
       <button v-if="!selected" class="option-dark button" @click="loadSeaboardInputs">Reload</button>
       <button v-else class="option-dark button" @click="connect">Connect</button>
     </card>
-    <div class="app-container midi-input-select" v-if="!seaboardInputs.length">
+    <div title="No Input Found" class="midi-input-select" v-if="!seaboardInputs.length && compatibleBrowser">
       No MIDI Input found, please check the connection and hit <button @click="loadSeaboardInputs">Reload</button>
     </div>
     <div v-if="seaboard">
