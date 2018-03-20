@@ -3,47 +3,47 @@
     <div id="app-header">
       <h3>Surfboard</h3>
     </div>
-    <div class="app-container app-error" v-if="!compatibleBrowser">
+    <card class="app-container app-error" v-if="!compatibleBrowser" title="error">
       I'm sorry but unfortunately your browser isn't yet supported by the APIs Surfboard is using! Please try again with a recent Chrome or Chromium version.
       Thanks!
-    </div>
-    <div class="app-container midi-input-select" v-if="seaboardInputs.length && !seaboard">
-      <h3>Which MIDI Input should we use?</h3>
-      <div class="option-light"
+    </card>
+    <card class="midi-input-select" v-if="seaboardInputs.length && !seaboard" title="Which MIDI Input should we use?">
+      <div class="option-light midi-input-option"
         v-for="(seaboardInput, index) in seaboardInputs"
         :key="index"
         @click="selected = seaboardInput"
         :class="{selected: selected === seaboardInput}">{{seaboardInput.name}}
       </div>
-      <div class="option-light" @click="loadSeaboardInputs">Reload</div>
-      <button v-if="selected" @click="connect">Connect</button>
-    </div>
+      <button v-if="!selected" class="option-dark button" @click="loadSeaboardInputs">Reload</button>
+      <button v-else class="option-dark button" @click="connect">Connect</button>
+    </card>
     <div class="app-container midi-input-select" v-if="!seaboardInputs.length">
       No MIDI Input found, please check the connection and hit <button @click="loadSeaboardInputs">Reload</button>
     </div>
     <div v-if="seaboard">
+      <!-- <tracks/> -->
       <synthetizers :seaboard="seaboard"/>
-      <key-tracker :seaboard="seaboard"/>   
+      <key-tracker :seaboard="seaboard"/>
     </div>
   </div>
 </template>
 
 <script>
 import { MIDIController } from "@/lib/seaboard-api/js/MIDI"
+import { Synthetizers, KeyTracker, Tracks } from '@/components/UI/Windows'
+import Card from '@/components/UI/Card'
 import Seaboard from "@/lib/seaboard-api/js/Seaboard"
-import Synthetizers from '@/components/Synthetizers'
-import KeyTracker from '@/components/KeyTracker'
 
 export default {
-  name: "App",
-  components: { Synthetizers, KeyTracker },
+  name: 'App',
+  components: { Synthetizers, KeyTracker, Tracks, Card },
   data() {
     return {
       seaboardInputs: [],
       selected: null,
       seaboard: null,
       compatibleBrowser: MIDIController.compatibleBrowser
-    };
+    }
   },
   created() {
     this.loadSeaboardInputs();
@@ -74,7 +74,8 @@ h1, h2, h3, h4, h5, h6 {
 body {
   background-color: rgb(60, 60, 60);
   color: #e2e2e2;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Oxygen', sans-serif;
+  /* font-family: 'Nanum Gothic', sans-serif;   */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -92,6 +93,7 @@ button {
 button:hover {
   transition: 0.5 all;
   background-color: rgb(124, 123, 123);
+  color: rgb(12, 12, 12);
 }
 ::-webkit-scrollbar {
   width: 11px;
@@ -119,32 +121,39 @@ button:hover {
   height: 6vh;
   line-height: 6vh;
 }
-.app-container {
-  background-color: rgb(42, 42, 42);
-  border-radius: 1vh;
-  margin: 1vh;
-  overflow-y: auto;
+#app {
+  max-width: 1920px;
+  margin: auto;
 }
 .app-error {
   padding: 20vh;
 }
 .midi-input-select {
   max-width: 100vh;
-  padding: 5vh;  
-  margin: auto;  
-  margin-top: 2vh;  
+  margin: auto !important;  
+  margin-top: 2vh;
 }
-.option-light {
-  background-color: rgb(70, 70, 70);
-  border-radius: 1vh;
-  padding: 0 1vh;
-  margin-top: 1vh;
+.midi-input-option {
+  margin: 1vh;
 }
-.option-light.selected {
-  background-color: rgb(124, 123, 123);
+input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid rgb(0, 243, 255);
+  color: white !important;
+  font-size: 1.6vh;
+  padding: 1vh;
 }
-.option-light:hover {
-  transition: 0.5 all;
-  background-color: rgb(100, 100, 100);
+select {
+  background-color: transparent !important;
+  padding: 0.5 1vh;
+  color: white !important;
+  font-size: 1.6vh;  
+}
+option {
+  color: black !important;
+}
+@media screen and (max-width: 1050) {
+
 }
 </style>

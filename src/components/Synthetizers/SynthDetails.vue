@@ -1,5 +1,5 @@
 <template>
-<div class="synth-details">
+<card :title="`${synth.name} (${synth.type})`" class="synth-details">
   <div class="app-container synth-conf" v-if="synth.type !== 'classic'">
     <h3>{{ synth.name }}</h3>
     <p>Type: {{ synth.type }} synthetizer</p>
@@ -21,13 +21,16 @@
     <p>Gain: <input type="number" v-model="synth.filter.gain" @input="synth.filter.updateGain()"></p>
     <p>Q: <input type="number" v-model="synth.filter.q" @input="synth.filter.updateQ()"></p>
   </div>
-</div>
+</card>
 </template>
 
 <script>
+import Card from '@/components/UI/Card'
+
 export default {
   name: 'SynthDetails',
-  props: {synth: {required: true}}
+  props: {synth: {required: true}},
+  components: { Card }
 }
 </script>
 <style>

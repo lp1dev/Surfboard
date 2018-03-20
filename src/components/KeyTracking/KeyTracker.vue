@@ -1,15 +1,17 @@
 <template>
-<div class="app-container visualizer-container">
-  <visualizer :seaboard="seaboard"/>
-  <p class="keys">C{{ octave }}</p>
-</div>
+  <card class="visualizer-container">
+    <visualizer :seaboard="seaboard"/>
+    <p class="keys">C{{ octave }}</p>
+  </card>
 </template>
 
 <script>
-import Visualizer from '@/components/Visualizer'
+import Visualizer from './Visualizer'
+import Card from '@/components/UI/Card'
 
 export default {
   name: 'KeyTracker',
+  components: { Visualizer, Card },
   props: {seaboard: {required: true}},
   computed: {
     octave () {
@@ -20,7 +22,6 @@ export default {
       return result - 1      
     }
   },
-  components: { Visualizer }
 }
 </script>
 

@@ -1,13 +1,12 @@
 <template>
 <div class="flex-container">
-  <div class="app-container synthetizers-list">
-    <h2>Synthesizers</h2>
-    <div>
+  <card class="synthetizers" title="Synthetizers">
+    <div class="synthetizers-list">
       <div class="option-light"
       v-for="synth in synthetizers" :key="synth.name" 
       @click="onSelection(synth)" :class="{selected: synthetizer === synth}">{{ synth.name }}</div>
     </div>
-  </div>
+  </card>
     <!-- Octave : {{ seaboard.firstKey / seaboard.numKeys }}<br/> -->
       <synth-graph v-if="synthetizer" id="synth-graph" :synth="synthetizer"/>
       <synth-details v-if="synthetizer" :synth="synthetizer"/>
@@ -15,13 +14,14 @@
 </template>
 
 <script>
-import SynthGraph from '@/components/SynthGraph'
-import SynthDetails from '@/components/SynthDetails'
+import SynthGraph from '@/components/Synthetizers/SynthGraph'
+import SynthDetails from '@/components/Synthetizers/SynthDetails'
+import Card from '@/components/UI/Card'
 import synthetizers from '@/utils/Synthetizers'
 
 export default {
   name: 'Synthetizers',
-  components: { SynthGraph, SynthDetails },
+  components: { SynthGraph, SynthDetails, Card },
   props: {'seaboard': {required: true}},
   data () {
     return {
@@ -54,10 +54,12 @@ export default {
 
 <style scoped>
 .synthetizers-list {
-  width: 25%;
   height: 65vh;
-  margin: 1vh;
-  padding: 2vh;
+  padding: 1vh;
+  overflow-y: auto;
 }
-
+.synthetizers {
+  width: 30%;
+  overflow: hidden;
+}
 </style>
