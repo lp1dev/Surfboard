@@ -30,7 +30,7 @@
         :key="index"
         :cx="coordinates.x * 50"
         :cy="coordinates.y * (height / 140)"
-        stroke-width="1"
+        stroke-width="2"
         stroke="white"
         :fill="`rgb(0, ${coordinates.size}, ${coordinates.size + 40})`"
         :r="coordinates.size"/>

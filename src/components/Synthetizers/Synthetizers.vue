@@ -17,7 +17,7 @@
 import SynthGraph from '@/components/Synthetizers/SynthGraph'
 import SynthDetails from '@/components/Synthetizers/SynthDetails'
 import Card from '@/components/UI/Card'
-import synthetizers from '@/utils/Synthetizers'
+import { synthetizers } from '@/utils/Synthetizers'
 
 export default {
   name: 'Synthetizers',

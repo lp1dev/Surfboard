@@ -12,6 +12,17 @@ const filters = {
   allpass: new Filter('allpass', 1000, 25, 9)
 }
 
+const filtersArray = [
+  new Filter('lowpass', 1000, 25, 9),
+  new Filter('highpass', 1000, 25, 9),
+  new Filter('bandpass', 1000, 25, 9),
+  new Filter('lowshelf', 1000, 25, 9),
+  new Filter('highshelf', 1000, 25, 9),
+  new Filter('peaking', 1000, 25, 9),
+  new Filter('notch', 1000, 25, 9),
+  new Filter('allpass', 1000, 25, 9)
+]
+
 const synthetizers = [
   new SubstractiveSynthetizer('Synthetizer 1 (Classic Sine)', filters.lowpass),
   new SubstractiveSynthetizer('Synthetizer 2 (Classic Square)', filters.lowpass, {fadeTime: 0.3, type: 'square'}),
@@ -37,4 +48,5 @@ const synthetizers = [
   new FunctionSubstractiveSynthetizer('High Pitched Buzzer', filters.lowpass, {fadeTime: 0.5}, (x) => Math.tan(x) + (Math.pow(x, 1.2) / 10), false, 40)
 ]
 
-export default synthetizers
+// export default synthetizers
+export { filters, synthetizers, filtersArray }

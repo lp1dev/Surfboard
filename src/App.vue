@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <div id="app-header">
-      <h3>Surfboard</h3>
+      <h3>Surfboard {{ version }}</h3>
     </div>
     <card v-if="!compatibleBrowser" title="Ooops">
       <div class="app-error">
-        I'm sorry but unfortunately your browser isn't yet supported by the APIs Surfboard is using! Please try again with a recent Chrome or Chromium version.
+        I'm sorry but unfortunately your browser isn't yet supported 
+        by the APIs Surfboard is using! Please try again with a recent 
+        Chrome or Chromium version.
         Thanks!
       </div>
     </card>
@@ -23,7 +25,7 @@
       No MIDI Input found, please check the connection and hit <button @click="loadSeaboardInputs">Reload</button>
     </div>
     <div v-if="seaboard">
-      <!-- <tracks/> -->
+      <tracks/>
       <synthetizers :seaboard="seaboard"/>
       <key-tracker :seaboard="seaboard"/>
     </div>
@@ -36,11 +38,14 @@ import { Synthetizers, KeyTracker, Tracks } from '@/components/UI/Windows'
 import Card from '@/components/UI/Card'
 import Seaboard from "@/lib/seaboard-api/js/Seaboard"
 
+const version = "0.03a"
+
 export default {
   name: 'App',
   components: { Synthetizers, KeyTracker, Tracks, Card },
   data() {
     return {
+      version: version,
       seaboardInputs: [],
       selected: null,
       seaboard: null,
@@ -98,7 +103,6 @@ button:hover {
   color: rgb(12, 12, 12);
 }
 ::-webkit-scrollbar {
-  width: 11px;
   height: 11px;
 }
 
@@ -145,6 +149,7 @@ input {
   color: white !important;
   font-size: 1.6vh;
   padding: 1vh;
+  text-align: center;
 }
 select {
   background-color: transparent !important;
