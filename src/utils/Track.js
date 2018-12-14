@@ -29,6 +29,9 @@ class Track {
     // this.gainNode
     this.inputs.push(input)
   }
+  handleMIDIMessage (message) {
+    console.log('Track :: handleMIDIMessage', message)
+  }
 }
 
 export default Track
